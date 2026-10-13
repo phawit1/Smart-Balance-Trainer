@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>Smart Balance Trainer | AI Sports Lab</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1a2b;--panel2:#102239;--line:#20364d;--text:#edf7ff;--muted:#91a9c1;--cyan:#42e8ff;--blue:#4b8dff;--green:#6af0bd;--red:#ff7188}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#0e2b43 0,transparent 40%),var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif}button,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,select:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}.wrap{max-width:1440px;margin:auto;padding:0 24px 42px}.topbar{height:76px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:16px}.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.04em}.logo{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;color:#04111d;font-size:20px;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 0 26px #42e8ff25}.brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:.2em;margin-top:3px}.top-right{display:flex;gap:10px;align-items:center}.tag{border:1px solid var(--line);border-radius:99px;padding:9px 12px;color:var(--muted);font-size:11px}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px;box-shadow:0 0 10px #6af0bd75}.intro{display:flex;justify-content:space-between;align-items:end;gap:18px;padding:30px 0 23px}.eyebrow{font-size:10px;letter-spacing:.22em;color:var(--cyan);font-weight:800}.intro h1{font-size:clamp(28px,4vw,44px);line-height:1.04;letter-spacing:-.055em;margin:9px 0}.intro h1 span{color:var(--cyan)}.intro p{color:var(--muted);font-size:13px;line-height:1.7;max-width:650px;margin:0}.session-state{border:1px solid var(--line);border-radius:12px;padding:11px 13px;white-space:nowrap;color:var(--muted);font-size:11px}.main-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.82fr);gap:18px;align-items:start}.panel{background:linear-gradient(145deg,#0e1d30,#0a1727);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 18px 45px #00000012}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 19px;border-bottom:1px solid var(--line)}.panel-title{font-size:12px;font-weight:800;letter-spacing:.04em}.status{font-size:10px;color:var(--muted);letter-spacing:.1em}.status.active{color:var(--green)}.stage{position:relative;aspect-ratio:4/3;min-height:300px;max-height:680px;background:radial-gradient(ellipse at 50% 40%,#153a55,#081625 70%);overflow:hidden}.stage:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#42e8ff0b 1px,transparent 1px),linear-gradient(90deg,#42e8ff0b 1px,transparent 1px);background-size:34px 34px}.stage video{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;transform:scaleX(-1)}#poseCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}.stage-chip{position:absolute;z-index:3;top:13px;left:13px;border:1px solid #42e8ff55;background:#061522dd;border-radius:8px;padding:8px 10px;font-size:10px;color:#c8faff;backdrop-filter:blur(8px)}.stage-chip.right{left:auto;right:13px;color:#a6bed1;border-color:#ffffff24}.stage-bottom{position:absolute;z-index:3;bottom:13px;left:13px;right:13px;display:flex;justify-content:space-between;gap:10px;align-items:end}.helper{font-size:10px;color:#c0d2e1;line-height:1.6;text-shadow:0 1px 4px #000}.stage-controls{display:flex;gap:7px}.icon-btn{border:1px solid #ffffff38;background:#071827e8;color:white;border-radius:9px;width:39px;height:39px;font-size:17px}.placeholder{position:absolute;z-index:4;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px;background:#06111a6b}.cam-icon{width:64px;height:64px;border:1px solid #42e8ff55;border-radius:20px;display:grid;place-items:center;color:var(--cyan);font-size:27px;background:#42e8ff0b;margin-bottom:16px}.placeholder h2{font-size:19px;margin:0 0 8px}.placeholder p{font-size:12px;color:#a9c0d4;max-width:330px;line-height:1.7;margin:0 0 17px}.btn{border:0;border-radius:11px;padding:12px 16px;font-size:12px;font-weight:850;background:linear-gradient(100deg,var(--cyan),#80b6ff);color:#05111e;box-shadow:0 6px 22px #42e8ff15}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text);box-shadow:none}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);box-shadow:none}.camera-foot{display:flex;justify-content:space-between;gap:10px;padding:12px 17px;color:var(--muted);font-size:10px;line-height:1.6}.camera-foot strong{color:var(--text)}.side{display:grid;gap:17px}.metric{padding:19px}.metric-top{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:.1em}.score-row{display:flex;gap:17px;align-items:center;margin:18px 0}.ring{width:110px;height:110px;position:relative;flex:0 0 110px}.ring svg{width:100%;height:100%;transform:rotate(-90deg)}.ring circle{fill:none;stroke-width:7}.ring .track{stroke:var(--line)}.ring .arc{stroke:var(--cyan);stroke-linecap:round;stroke-dasharray:289;stroke-dashoffset:63;filter:drop-shadow(0 0 5px #42e8ff6b);transition:stroke-dashoffset .35s}.ring-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}.ring-number strong{font-size:30px;letter-spacing:-.05em}.ring-number span{font-size:9px;color:var(--muted);letter-spacing:.12em}.score-copy strong{display:block;font-size:14px;margin-bottom:7px}.score-copy p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.mini{padding:11px 9px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}.mini span{display:block;font-size:9px;color:var(--muted);margin-bottom:7px}.mini strong{font-size:16px}.mini small{font-size:9px;color:var(--muted);margin-left:2px}.exercise-panel{padding:18px}.exercise-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.exercise-head h2{font-size:14px;margin:0}.level{font-size:9px;color:var(--cyan);border:1px solid #42e8ff4a;border-radius:6px;padding:5px 7px}.exercises{display:grid;gap:8px}.exercise{width:100%;display:flex;align-items:center;gap:11px;text-align:left;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:12px;padding:10px}.exercise.active{border-color:#42e8ff99;background:#42e8ff0c}.ex-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;background:var(--panel2);border-radius:10px;color:var(--cyan);font-size:18px}.ex-info{flex:1}.ex-info strong{display:block;font-size:11px;margin-bottom:4px}.ex-info span{font-size:10px;color:var(--muted)}.ex-time{font-size:10px;color:var(--muted);white-space:nowrap}.actions{display:flex;gap:8px;margin-top:14px}.actions button{flex:1}.progress-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.progress-panel{padding:19px}.section-title{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:17px}.section-title h2{font-size:14px;margin:0}.section-title span{font-size:10px;color:var(--muted)}.chart{height:155px;display:flex;align-items:end;gap:clamp(8px,1.7vw,20px);padding:0 4px;border-bottom:1px solid var(--line);position:relative}.chart:before,.chart:after{content:"";position:absolute;left:0;right:0;border-top:1px dashed #20364d}.chart:before{top:33%}.chart:after{top:66%}.bar-group{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px;z-index:1}.bar{width:min(31px,72%);min-height:4px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,var(--cyan),#347bff);transition:height .3s}.bar-label{font-size:9px;color:var(--muted);padding-bottom:8px}.legend{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px;margin-top:13px}.legend i{display:inline-block;width:7px;height:7px;background:var(--cyan);border-radius:2px;margin-right:6px}.history-list{display:grid}.history-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}.history-row:last-child{border-bottom:0}.history-icon{width:35px;height:35px;border-radius:10px;background:var(--panel2);color:var(--cyan);display:grid;place-items:center}.history-detail{flex:1;min-width:0}.history-detail strong{font-size:11px;display:block;margin-bottom:4px}.history-detail span{font-size:10px;color:var(--muted)}.history-score{font-size:15px;font-weight:800;white-space:nowrap}.history-score small{font-size:9px;color:var(--muted);font-weight:500}.empty{font-size:11px;color:var(--muted);line-height:1.7;padding:18px 0}.note{margin-top:18px;border:1px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;gap:10px;color:var(--muted);font-size:10px;line-height:1.7}.note strong{color:var(--text)}.toast{position:fixed;z-index:20;bottom:20px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#102b3d;color:white;border:1px solid #42e8ff66;padding:12px 16px;border-radius:12px;font-size:12px;max-width:90vw;text-align:center;transition:.25s;box-shadow:0 10px 40px #0006}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-bg{display:none;position:fixed;z-index:30;inset:0;background:#020812c9;align-items:center;justify-content:center;padding:20px}.modal-bg.show{display:flex}.modal{width:min(440px,100%);padding:23px;border:1px solid var(--line);border-radius:17px;background:var(--panel)}.modal h3{margin:0 0 8px}.modal p{font-size:12px;color:var(--muted);line-height:1.7}.modal-actions{display:flex;justify-content:end;gap:8px}.loading{position:absolute;z-index:5;inset:0;background:#06111ae8;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:25px}.loading.show{display:flex}.spinner{width:36px;height:36px;border:3px solid #42e8ff28;border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:15px}@keyframes spin{to{transform:rotate(360deg)}}.smallprint{font-size:10px;color:var(--muted);line-height:1.7;margin-top:12px}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.progress-grid{grid-template-columns:1fr}.stage{max-height:none}}
+@media(max-width:600px){.wrap{padding:0 12px 28px}.topbar{height:65px}.top-right .tag:first-child{display:none}.intro{align-items:start;flex-direction:column;padding:24px 0 18px}.session-state{font-size:10px}.side{grid-template-columns:1fr}.panel{border-radius:15px}.panel-head{padding:14px}.stage{aspect-ratio:3/4;min-height:360px;max-height:580px}.metric,.exercise-panel,.progress-panel{padding:15px}.camera-foot{padding:10px 13px}.camera-foot span:last-child{text-align:right}.progress-grid{gap:12px}.score-row{gap:13px}.ring{width:98px;height:98px;flex-basis:98px}.minis{gap:6px}.mini{padding:10px 7px}.mini strong{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar">
+  <div class="brand"><div class="logo">S</div><div>SMART BALANCE<small>AI SPORTS LAB</small></div></div>
+  <div class="top-right"><div class="tag"><span class="live-dot"></span>ON-DEVICE CAMERA</div><div class="tag">iPad ready ↗</div></div>
+</header>
+<section class="intro">
+  <div><div class="eyebrow">SPORTS PERFORMANCE / AI TRAINING</div><h1>Train your balance.<br><span>Unlock your potential.</span></h1><p>ฝึกการทรงตัวและการควบคุมร่างกายด้วย AI Pose Detection วิเคราะห์ท่าทางจากกล้องแบบเรียลไทม์ พร้อมคะแนนและประวัติพัฒนาการ</p></div>
+  <div class="session-state"><span class="live-dot"></span><span id="sessionState">READY TO BEGIN</span></div>
+</section>
+<div class="main-grid">
+  <section class="panel">
+    <div class="panel-head"><div class="panel-title">⌗ &nbsp; LIVE BODY TRACKING</div><div class="status" id="cameraStatus">● CAMERA OFF</div></div>
+    <div class="stage" id="stage">
+      <video id="video" playsinline muted autoplay hidden></video><canvas id="poseCanvas"></canvas>
+      <div class="stage-chip" id="trackingLabel">POSE LANDMARKER / STANDBY</div><div class="stage-chip right" id="camLabel">CAM 01 · IPAD</div>
+      <div class="placeholder" id="placeholder"><div class="cam-icon">◎</div><h2>Ready when you are</h2><p>วาง iPad ให้เห็นร่างกายเต็มตัวในเฟรม จากนั้นเปิดกล้องเพื่อเริ่มตรวจจับท่าทาง</p><button class="btn" id="enableCamera">Enable camera&nbsp; →</button></div>
+      <div class="loading" id="loading"><div class="spinner"></div><strong id="loadingTitle">กำลังโหลด AI Pose Landmarker</strong><p id="loadingText" class="smallprint">ครั้งแรกอาจใช้เวลาสักครู่ และต้องเชื่อมต่ออินเทอร์เน็ต</p></div>
+      <div class="stage-bottom"><div class="helper" id="poseNote">FULL BODY · GOOD LIGHTING<br>แนะนำให้วางกล้องห่างประมาณ 2–3 เมตร</div><div class="stage-controls"><button class="icon-btn" id="mirrorBtn" aria-label="สลับภาพกระจก">↔</button><button class="icon-btn" id="fullscreenBtn" aria-label="เต็มจอ">⛶</button></div></div>
+    </div>
+    <div class="camera-foot"><span><strong>Setup tip</strong> · วาง iPad ให้มั่นคงและเห็นตั้งแต่ศีรษะถึงเท้า</span><span id="cameraFootStatus">ต้องอนุญาตใช้กล้อง</span></div>
+  </section>
+  <aside class="side">
+    <section class="panel metric">
+      <div class="metric-top"><span>BALANCE SCORE</span><span id="scoreLabel">WAITING FOR AI</span></div>
+      <div class="score-row"><div class="ring"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="46"/><circle class="arc" id="scoreArc" cx="50" cy="50" r="46" style="stroke-dashoffset:289"/></svg><div class="ring-number"><strong id="scoreValue">—</strong><span>/ 100 PTS</span></div></div><div class="score-copy"><strong id="scoreFeedback">พร้อมเริ่มฝึก</strong><p id="scoreDescription">เมื่อ AI ตรวจพบร่างกาย คะแนนความนิ่งจะแสดงระหว่างการฝึก</p></div></div>
+      <div class="minis"><div class="mini"><span>SESSION TIME</span><strong id="timeValue">00:00</strong></div><div class="mini"><span>STABILITY</span><strong id="stabilityValue">—<small>%</small></strong></div><div class="mini"><span>BODY SWAY</span><strong id="swayValue">—<small> px</small></strong></div></div>
+      <div class="smallprint">คะแนนเป็นค่าประมาณจากการเปลี่ยนตำแหน่งลำตัวในภาพ ไม่ใช่การวินิจฉัยหรือการประเมินทางการแพทย์</div>
+    </section>
+    <section class="panel exercise-panel">
+      <div class="exercise-head"><h2>Choose your exercise</h2><span class="level">LEVEL 01</span></div>
+      <div class="exercises">
+        <button class="exercise active" data-exercise="Single-leg balance" data-duration="30"><div class="ex-icon">◉</div><div class="ex-info"><strong>Single-leg balance</strong><span>ฝึกความมั่นคงพื้นฐาน</span></div><div class="ex-time">30 sec</div></button>
+        <button class="exercise" data-exercise="Tandem stance" data-duration="45"><div class="ex-icon">⇄</div><div class="ex-info"><strong>Tandem stance</strong><span>ฝึกการควบคุมท่าทาง</span></div><div class="ex-time">45 sec</div></button>
+        <button class="exercise" data-exercise="Controlled weight shift" data-duration="60"><div class="ex-icon">⌁</div><div class="ex-info"><strong>Controlled weight shift</strong><span>ฝึกถ่ายน้ำหนักอย่างควบคุม</span></div><div class="ex-time">60 sec</div></button>
+      </div>
+      <div class="actions"><button class="btn secondary" id="resetBtn">Reset</button><button class="btn" id="startBtn" disabled>Start session ▶</button></div>
+      <div class="smallprint">เลือกท่าฝึกก่อนเริ่มเซสชัน ยืนในพื้นที่โล่งและหยุดทันทีหากรู้สึกไม่สบาย</div>
+    </section>
+  </aside>
+</div>
+<div class="progress-grid">
+  <section class="panel progress-panel"><div class="section-title"><h2>Performance progress</h2><span>LAST 7 SESSIONS</span></div><div class="chart" id="progressChart"><div class="empty">บันทึกเซสชันแรกเพื่อเริ่มดูพัฒนาการ</div></div><div class="legend"><span><i></i>Balance score</span><span id="trendLabel">ยังไม่มีข้อมูล</span></div></section>
+  <section class="panel progress-panel"><div class="section-title"><h2>Recent sessions</h2><span id="historyCount">0 SESSIONS</span></div><div class="history-list" id="historyList"><div class="empty">ประวัติการฝึกจะปรากฏที่นี่หลังจบเซสชัน และบันทึกไว้ในเบราว์เซอร์เครื่องนี้</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn secondary" id="exportBtn">Export CSV</button><button class="btn ghost" id="clearHistoryBtn">Clear history</button></div></section>
+</div>
+<div class="note"><span style="color:var(--cyan);font-size:17px">▣</span><span><strong>Privacy by design.</strong> ภาพจากกล้องประมวลผลในเบราว์เซอร์และไม่ได้อัปโหลดไปยังเซิร์ฟเวอร์โดยโค้ดนี้ ประวัติและคะแนนเก็บไว้ใน local storage ของอุปกรณ์ที่ใช้ หากเปิด Private Browsing หรือเคลียร์ข้อมูลเว็บไซต์ ประวัติอาจหายได้</span></div>
+<div class="note"><span style="color:var(--cyan);font-size:17px">ⓘ</span><span><strong>ข้อจำกัดของ Prototype:</strong> ใช้ MediaPipe Pose Landmarker ตรวจจับจุดร่างกายจริง ส่วนคะแนนเป็นตัวชี้วัดทดลองที่คำนวณจากการแกว่งของตำแหน่งสะโพกในภาพ ไม่ใช่ค่าความสมดุลทางคลินิก และต้องทดสอบกับอุปกรณ์/สภาพแสงจริงก่อนนำไปใช้ประเมินนักกีฬา</span></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-bg" id="modalBg"><div class="modal"><h3 id="modalTitle">ต้องใช้กล้อง</h3><p id="modalText">อนุญาตให้ Safari เข้าถึงกล้อง และเปิดเว็บผ่าน HTTPS</p><div class="modal-actions"><button class="btn secondary" id="modalClose">ปิด</button></div></div></div>
+<script type="module">
+import { FilesetResolver, PoseLandmarker } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22";
+const $ = id => document.getElementById(id);
+const video=$("video"), canvas=$("poseCanvas"), ctx=canvas.getContext("2d");
+let poseLandmarker=null, stream=null, raf=0, lastVideoTime=-1, running=false, startedAt=0, elapsedBefore=0, clockTimer=null;
+let selectedExercise="Single-leg balance", selectedDuration=30, mirror=true, lastScore=null, hipHistory=[], sessionHistory=[];
+const STORE="smartBalanceTrainer.sessions.v1";
+try{sessionHistory=JSON.parse(localStorage.getItem(STORE)||"[]");if(!Array.isArray(sessionHistory))sessionHistory=[]}catch{sessionHistory=[]}
+function toast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(toast._timer);toast._timer=setTimeout(()=>t.classList.remove("show"),2800)}
+function showModal(title,text){$("modalTitle").textContent=title;$("modalText").textContent=text;$("modalBg").classList.add("show")}
+function fmt(seconds){return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
+function setStatus(text,active=false){$("cameraStatus").textContent=(active?"● ":"○ ")+text;$("cameraStatus").classList.toggle("active",active)}
+function resizeCanvas(){const r=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0)}
+function line(a,b,landmarks,w,h){if(!landmarks[a]||!landmarks[b])return;const p=landmarks[a],q=landmarks[b];if((p.visibility??1)<.35||(q.visibility??1)<.35)return;ctx.beginPath();ctx.moveTo(p.x*w,p.y*h);ctx.lineTo(q.x*w,q.y*h);ctx.stroke()}
+const connections=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23,25],[25,27],[27,29],[29,31],[27,31],[24,26],[26,28],[28,30],[30,32],[28,32]];
+function drawResults(result){
+ const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);
+ const lm=result?.landmarks?.[0];if(!lm){$("trackingLabel").textContent="POSE LANDMARKER / SEARCHING";$("poseNote").innerHTML="ไม่พบร่างกายเต็มตัว<br>ลองขยับให้เห็นศีรษะ ไหล่ สะโพก และเท้า";return}
+ $("trackingLabel").textContent="AI POSE DETECTED · 33 LANDMARKS";
+ $("poseNote").innerHTML="BODY DETECTED · LIVE TRACKING<br>เส้นโครงกระดูกแสดงจากจุดที่ AI ตรวจจับได้";
+ ctx.save();ctx.lineWidth=Math.max(2,w*.004);ctx.strokeStyle="#42e8ff";ctx.shadowColor="#42e8ff";ctx.shadowBlur=8;
+ connections.forEach(([a,b])=>line(a,b,lm,w,h));ctx.shadowBlur=10;
+ lm.forEach((p,i)=>{if((p.visibility??1)<.35)return;ctx.beginPath();ctx.arc(p.x*w,p.y*h,Math.max(2,w*.006),0,Math.PI*2);ctx.fillStyle=[11,12,23,24,25,26,27,28].includes(i)?"#ffffff":"#42e8ff";ctx.fill();ctx.strokeStyle="#07111f";ctx.lineWidth=1;ctx.stroke()});ctx.restore();
+ updateScore(lm);
+}
+function updateScore(lm){
+ const required=[11,12,23,24];if(required.some(i=>!lm[i]||(lm[i].visibility??1)<.45)){ $("scoreFeedback").textContent="ปรับตำแหน่ง";$("scoreDescription").textContent="พยายามให้ไหล่และสะโพกมองเห็นชัดในภาพ";return}
+ const shoulderMid={x:(lm[11].x+lm[12].x)/2,y:(lm[11].y+lm[12].y)/2};
+ const hipMid={x:(lm[23].x+lm[24].x)/2,y:(lm[23].y+lm[24].y)/2};
+ const shoulderTilt=Math.abs(lm[11].y-lm[12].y);
+ const hipTilt=Math.abs(lm[23].y-lm[24].y);
+ const torsoLean=Math.abs(shoulderMid.x-hipMid.x);
+ hipHistory.push({x:hipMid.x,y:hipMid.y,t:performance.now()});if(hipHistory.length>45)hipHistory.shift();
+ const xs=hipHistory.map(p=>p.x),ys=hipHistory.map(p=>p.y);
+ const swayX=xs.length>3?Math.max(...xs)-Math.min(...xs):0, swayY=ys.length>3?Math.max(...ys)-Math.min(...ys):0;
+ const sway=(swayX+swayY)*50;
+ const penalty=Math.min(45,shoulderTilt*180+hipTilt*180+torsoLean*75+Math.min(18,sway*1.8));
+ const score=Math.max(0,Math.min(100,Math.round(100-penalty)));
+ const stability=Math.max(0,Math.min(100,Math.round(100-Math.min(60,sway*4)-shoulderTilt*120-hipTilt*100)));
+ lastScore=score;$("scoreValue").textContent=score;$("scoreArc").style.strokeDashoffset=289-score/100*289;
+ $("stabilityValue").innerHTML=stability+'<small>%</small>';$("swayValue").innerHTML=(sway*100).toFixed(1)+'<small> px*</small>';$("scoreLabel").textContent="LIVE ESTIMATE";
+ $("scoreFeedback").textContent=score>=85?"Excellent control":score>=70?"Good foundation":"Focus on stability";
+ $("scoreDescription").textContent=score>=85?"รักษาท่าทางให้มั่นคงและหายใจสม่ำเสมอ":score>=70?"พยายามรักษาแนวไหล่และสะโพกให้อยู่ในระดับใกล้เคียงกัน":"ลดการเอนตัวและพยายามยืนในตำแหน่งที่มั่นคง";
+}
+async function initPose(){
+ if(poseLandmarker)return;
+ $("loading").classList.add("show");$("loadingTitle").textContent="กำลังโหลด AI Pose Landmarker";$("loadingText").textContent="กำลังโหลดโมเดลจาก CDN ต้องใช้อินเทอร์เน็ตในครั้งแรก";
+ try{
+  const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/wasm");
+  poseLandmarker=await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:"https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",delegate:"GPU"},runningMode:"VIDEO",numPoses:1,minPoseDetectionConfidence:.5,minPosePresenceConfidence:.5,minTrackingConfidence:.5});
+ }catch(err){
+  try{const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/wasm");poseLandmarker=await PoseLandmarker.createFromOptions(vision,{baseOptions:{modelAssetPath:"https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task"},runningMode:"VIDEO",numPoses:1,minPoseDetectionConfidence:.5,minPosePresenceConfidence:.5,minTrackingConfidence:.5})}
+  catch(err2){console.error(err,err2);throw new Error("โหลด MediaPipe ไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่")}
+ }finally{$("loading").classList.remove("show")}
+}
+async function enableCamera(){
+ if(!window.isSecureContext){showModal("ต้องเปิดผ่าน HTTPS","กล้องใช้งานได้เมื่อเปิดเว็บผ่าน HTTPS หรือ localhost ไม่สามารถเปิดกล้องจากไฟล์ในบางเบราว์เซอร์ได้ ให้นำไฟล์นี้ไปโฮสต์ด้วย GitHub Pages หรือเปิดผ่านเซิร์ฟเวอร์ที่รองรับ HTTPS");return}
+ if(!navigator.mediaDevices?.getUserMedia){showModal("เบราว์เซอร์ไม่รองรับกล้อง","ลองเปิดเว็บไซต์ด้วย Safari เวอร์ชันล่าสุดบน iPad และตรวจสอบสิทธิ์กล้อง");return}
+ try{
+  $("loading").classList.add("show");$("loadingTitle").textContent="กำลังเปิดกล้อง";$("loadingText").textContent="โปรดกด Allow เมื่อเบราว์เซอร์ขออนุญาต";
+  stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:"user",width:{ideal:1280},height:{ideal:960}}});
+  video.srcObject=stream;video.hidden=false;await video.play();$("placeholder").style.display="none";resizeCanvas();
+  await initPose();setStatus("CAMERA ON",true);$("sessionState").textContent="CAMERA READY";$("cameraFootStatus").textContent="กล้องทำงาน · ประมวลผลในอุปกรณ์";$("startBtn").disabled=false;
+  toast("เปิดกล้องสำเร็จ กำลังตรวจจับร่างกาย");lastVideoTime=-1;raf=requestAnimationFrame(predict);
+ }catch(e){console.error(e);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null} $("loading").classList.remove("show");showModal("เปิดกล้องหรือ AI ไม่สำเร็จ",e?.message||"โปรดอนุญาตกล้อง ตรวจสอบอินเทอร์เน็ต และลองอีกครั้ง");}
+}
+function predict(){
+ if(!stream||!poseLandmarker)return;
+ if(video.readyState>=2&&video.currentTime!==lastVideoTime){
+  lastVideoTime=video.currentTime;
+  try{const result=poseLandmarker.detectForVideo(video,performance.now());drawResults(result)}catch(e){console.warn(e)}
+ }
+ raf=requestAnimationFrame(predict);
+}
+function updateClock(){const total=elapsedBefore+(running?Math.floor((Date.now()-startedAt)/1000):0);$("timeValue").textContent=fmt(total)}
+function startSession(){
+ if(!stream||!poseLandmarker){toast("เปิดกล้องและรอ AI โหลดให้เสร็จก่อน");return}
+ if(running){finishSession();return}
+ running=true;startedAt=Date.now();hipHistory=[];lastScore=null;$("startBtn").textContent="Finish session ■";$("sessionState").textContent="SESSION IN PROGRESS";$("scoreLabel").textContent="LIVE ESTIMATE";clockTimer=setInterval(updateClock,250);toast("เริ่มฝึกได้เลย มองกล้องและทำท่าที่เลือก");
+}
+function finishSession(){
+ if(!running)return;const durationSec=elapsedBefore+Math.max(1,Math.floor((Date.now()-startedAt)/1000));running=false;clearInterval(clockTimer);updateClock();
+ const entry={exercise:selectedExercise,score:lastScore??0,duration:durationSec,date:new Date().toISOString(),stability:$("stabilityValue").textContent.replace("%","")};
+ sessionHistory.unshift(entry);sessionHistory=sessionHistory.slice(0,100);try{localStorage.setItem(STORE,JSON.stringify(sessionHistory))}catch(e){console.warn(e)}
+ elapsedBefore=0;$("timeValue").textContent="00:00";$("startBtn").textContent="Start session ▶";$("sessionState").textContent="SESSION COMPLETE";renderHistory();toast("บันทึกผลการฝึกไว้ในเบราว์เซอร์แล้ว");
+}
+function resetSession(){if(running){running=false;clearInterval(clockTimer)}elapsedBefore=0;hipHistory=[];$("timeValue").textContent="00:00";$("startBtn").textContent="Start session ▶";$("sessionState").textContent=stream?"CAMERA READY":"READY TO BEGIN";$("scoreValue").textContent="—";$("scoreArc").style.strokeDashoffset=289;$("stabilityValue").innerHTML="—<small>%</small>";$("swayValue").innerHTML="—<small> px</small>";$("scoreLabel").textContent="WAITING FOR AI";$("scoreFeedback").textContent="พร้อมเริ่มฝึก";$("scoreDescription").textContent="เมื่อ AI ตรวจพบร่างกาย คะแนนความนิ่งจะแสดงระหว่างการฝึก";toast("รีเซ็ตเซสชันแล้ว")}
+function renderHistory(){
+ const list=$("historyList");$("historyCount").textContent=sessionHistory.length+" SESSIONS";
+ if(!sessionHistory.length){list.innerHTML='<div class="empty">ประวัติการฝึกจะปรากฏที่นี่หลังจบเซสชัน</div>';$("progressChart").innerHTML='<div class="empty">บันทึกเซสชันแรกเพื่อเริ่มดูพัฒนาการ</div>';$("trendLabel").textContent="ยังไม่มีข้อมูล";return}
+ list.innerHTML="";sessionHistory.slice(0,4).forEach(item=>{const row=document.createElement("div");row.className="history-row";const icon=document.createElement("div");icon.className="history-icon";icon.textContent="◉";const detail=document.createElement("div");detail.className="history-detail";const name=document.createElement("strong");name.textContent=item.exercise;const date=document.createElement("span");date.textContent=new Date(item.date).toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})+" · "+fmt(item.duration);detail.append(name,date);const score=document.createElement("div");score.className="history-score";score.textContent=item.score+" ";const small=document.createElement("small");small.textContent="pts";score.append(small);row.append(icon,detail,score);list.append(row)});
+ const latest=sessionHistory.slice(0,7).reverse();$("progressChart").innerHTML="";latest.forEach((item,i)=>{const group=document.createElement("div");group.className="bar-group";const bar=document.createElement("div");bar.className="bar";bar.style.height=Math.max(4,item.score)+"%";bar.title=item.score+" points";const label=document.createElement("div");label.className="bar-label";label.textContent=i===latest.length-1?"NOW":"S-"+(latest.length-i-1);group.append(bar,label);$("progressChart").append(group)});
+ if(sessionHistory.length>1){const delta=sessionHistory[0].score-sessionHistory[Math.min(sessionHistory.length-1,6)].score;$("trendLabel").textContent=(delta>=0?"+":"")+delta+" pts vs earlier"}else $("trendLabel").textContent="1 saved session";
+}
+$("enableCamera").addEventListener("click",enableCamera);$("startBtn").addEventListener("click",startSession);$("resetBtn").addEventListener("click",resetSession);
+document.querySelectorAll(".exercise").forEach(btn=>btn.addEventListener("click",()=>{if(running){toast("จบเซสชันก่อนเปลี่ยนท่าฝึก");return}document.querySelectorAll(".exercise").forEach(b=>b.classList.remove("active"));btn.classList.add("active");selectedExercise=btn.dataset.exercise;selectedDuration=Number(btn.dataset.duration);toast("เลือกท่าฝึก: "+selectedExercise)}));
+$("mirrorBtn").addEventListener("click",()=>{mirror=!mirror;video.style.transform=mirror?"scaleX(-1)":"none";toast(mirror?"เปิดภาพกระจก":"ปิดภาพกระจก")});
+$("fullscreenBtn").addEventListener("click",async()=>{try{if(!document.fullscreenElement)await $("stage").requestFullscreen();else await document.exitFullscreen()}catch{toast("อุปกรณ์นี้ไม่รองรับโหมดเต็มจอ")}})
+$("modalClose").addEventListener("click",()=>$("modalBg").classList.remove("show"));
+$("clearHistoryBtn").addEventListener("click",()=>{if(!confirm("ต้องการลบประวัติการฝึกทั้งหมดในอุปกรณ์นี้หรือไม่?"))return;sessionHistory=[];localStorage.removeItem(STORE);renderHistory();toast("ลบประวัติแล้ว")});
+$("exportBtn").addEventListener("click",()=>{if(!sessionHistory.length){toast("ยังไม่มีประวัติให้ส่งออก");return}const esc=v=>'"'+String(v??"").replaceAll('"','""')+'"';const rows=[["Date","Exercise","Score","Duration_seconds","Stability"],...sessionHistory.map(s=>[s.date,s.exercise,s.score,s.duration,s.stability])];const csv="\ufeff"+rows.map(r=>r.map(esc).join(",")).join("\r\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="smart-balance-training-history.csv";a.click();URL.revokeObjectURL(url)});
+window.addEventListener("resize",resizeCanvas);window.addEventListener("beforeunload",()=>{if(stream)stream.getTracks().forEach(t=>t.stop());cancelAnimationFrame(raf);clearInterval(clockTimer)});
+renderHistory();resizeCanvas();
+</script>
+</body>
+</html>
